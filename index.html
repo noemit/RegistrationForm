@@ -190,7 +190,7 @@
           <!---
           California zip codes only. CA zip codes range from 90001 to 96162. --> 
 
-          <span ng-show="submitted && registrationForm.zipcodeinput.$error && registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.zipcodeinput.$valid.pattern" class="glyphicon glyphicon-ok form-control-feedback"></span><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.zipcodeinput.$error &&registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty">Please provide a valid 5-digit California zip code.</span></span>
+          <span ng-show="submitted && registrationForm.zipcodeinput.$error && registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.zipcodeinput.$valid && registrationForm.zipcodeinput.$dirty" class="glyphicon glyphicon-ok form-control-feedback"></span><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.zipcodeinput.$error &&registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty">Please provide a valid 5-digit California zip code.</span></span>
          </div>
         <div class="col-md-6 col-md-offset-6">
         <div id="messages">
