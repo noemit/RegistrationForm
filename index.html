@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Code Test">
+    <meta name="author" content="Noemi">
 
     <title>Registration Form</title>
 
@@ -15,8 +15,10 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- My style edits on top of Bootstrap and bug fixes -->
+    <link href="css/mystyle.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -24,141 +26,46 @@
 
 
     <!-- jQuery Version 1.11.0 -->
+    <!-- required for bootstrap. -->
     <script src="js/jquery-1.11.0.js"></script>
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-    $("#zipcodewrap").hide();
-
-
-$('#californiaresident').change(function(){
-   $('#zipcodewrap').toggleClass( "required" );
-  if($(this).prop("checked")) {
-    $('#zipcodewrap').show(150);
-    $('#zipcode').attr('required','');
-  } else {
-    $('#zipcodewrap').hide(150);
-    $('#zipcode').attr('required','required');  
-  }
-});
-
-});
-    </script>
+   
 <style>
-.customcontainer
-{
-    border:1px solid #929292;
-    padding:10px;
-    margin-top:80px;
-    padding-bottom: 30px;
-margin-bottom: 10px;
-}
-.form-style {
-    display: block;
-width: 100%;
-height: 34px;
-padding: 6px 12px;
-font-size: 14px;
-line-height: 1.42857143;
-color: #555;
-background-color: #fff;
-border: 1px solid #000;
--webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
--o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-select.form-style {
-    -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-background:no-repeat url(images/simpleblack.png) center right -25px;}
-}
 
 
-input[type=checkbox].customcheckbox {
-                            display:none;
-                        }
-    input[type=checkbox].customcheckbox + label.checkboxlabel {
-       padding-left: 22px;
-height: 17px;
-display: inline-block;
-line-height: 17px;
-background-repeat: no-repeat;
-background-position: -36px 0px;
-vertical-align: middle;
-font-weight: normal;
-cursor: pointer;
-padding-l: 4p;
-padding-left: 25px;
 
-                        }
-
-input[type=checkbox].customcheckbox:checked + label.checkboxlabel {
-                            background-position: -36px -17px;                        }
-label.checkboxlabel {
-                background-image:url(images/simpleblack.png);
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-             .customheading {padding-bottom:10px;}
-            .customheading h3 {font-weight: normal;}
-            .form-group.required .control-label:after { 
-   content:" *";
-   color:red;
-}
-
-.btn-custom {
-background:#000;
-width:100%;
-color:white;
-border:1px solid black;
-margin-top:20px;
-}
-.btn-custom:hover {
-background:#333;
-width:100%;
-color:white;
-border:1px solid black;
-}
-input[type=checkbox] {
--webkit-appearance: initial;
-}
-
-.ng-invalid {
-  border: 1px solid red;
-}
-.ng-valid {
-  border: 1px solid green;
-}
 </style>
 </head>
 
 <body ng-app="registrationForm">
 
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="success">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal">
+      <h1>Great Success!</h1>
+      <p class="lead">One of our team members will contact you shortly.</p>
+    </div>
+  </div>
+</div>
 
-    <!-- Page Content -->
+    <!-- main container -->
     <div class="container" ng-controller="FormController">
     <div class="col-md-8 col-md-offset-2 customcontainer">
     <div class="col-md-12 customheading"><h3>Registration Form</h3></div>
-    <form role="form" name="registrationForm" novalidate>
+    
+    <!-- Form begins -->
+    <form role="form" name="registrationForm" ng-submit="butisitvalid()" ng-class="{submitted:trySubmit}" novalidate>
         <div class="col-md-6 form-group required" show-errors>
           <label for="nameinput" class="control-label">Name</label>
-           <input class="form-style" id="nameinput" name="name" type="text" required ng-model="registration.name" />
-           
-
+           <input class="form-style" id="nameinput" name="name" type="text" required ng-model="registration.name" /><span ng-show="registrationForm.name.$invalid && registrationForm.name.$touched || submitted && registrationForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.name.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+           <span class="help-block"><span ng-cloak ng-show="submitted && registrationForm.name.$invalid || registrationForm.name.$invalid && registrationForm.name.$touched || submitted && registrationForm.name.$invalid">Please provide your name.</span></span>
         </div>
         <div class="col-md-6 form-group">
          <label for="byinput">Birth Year</label>
-         <select id="byinput" name="birthyear" class="form-style">
-    <option value="2007">2007</option>
-    <option value="2006">2006</option>
-    <option value="2005">2005</option>
-    <option value="2004">2004</option>
-    <option value="2003">2003</option>
-    <option value="2002">2002</option>
+         <div class="fix-select">
+         <select id="byinput" name="birthyear" ng-model="birthyear" required class="form-style" ng-pattern="/(19[0-9]{2}|200[01])/">
+    <option disabled selected style="display:none;" value="">select year</option>
     <option value="2001">2001</option>
     <option value="2000">2000</option>
     <option value="1999">1999</option>
@@ -261,54 +168,65 @@ input[type=checkbox] {
     <option value="1902">1902</option>
     <option value="1901">1901</option>
     <option value="1900">1900</option>
-   </select>
+   </select><span class="fa fa-sort-desc"></span></div><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.birthyear.$error.required">Your birth year must be less than or equal to 2001.</span></span>
+   <!-- this validation is just for show. user can't select anything outside the specified range, so any real validation  should be done on server-side. -->
          </div>
           <span class="clearfix">
            <div class="col-md-6 form-group required" show-errors>
           <label for="emailinput" class="control-label">Email</label>
-           <input class="form-style" id="emailinput" type="text" name="email" required placeholder="Email"/>
-     
+           <input class="form-style" id="emailinput" type="text" name="email" required  ng-pattern="/^[a-zA-Z]+[a-zA-Z0-9._\i]+@[a-zA-Z\i]+\.[a-zA-Z.\i]{2,5}$/" ng-model="text" n/><span ng-show="submitted && registrationForm.email.$error &&registrationForm.email.$error.required || registrationForm.email.$invalid && registrationForm.email.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.email.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.email.$invalid || registrationForm.email.$invalid && registrationForm.email.$dirty" class="tada">Please provide a valid email address.</span></span>
+
+           <!-- 
+           For the email, I had to choose between Angular's default validation (triggered by type="email") which allowed emails like root@localhost. I chose to use a regex pattern that required a tld, because I felt it was more appropriate for a commercial application. The drawback is that losing type=email means you don't get @ and .com buttons on your iPhone. I saw that you can still do this with a custom directive with Angular, but felt that it was overkill.  -->
+
         </div>
          <div class="col-md-6 form-group">
           <label>Are you a California resident?</label>
-           <div><input id="californiaresident" type="checkbox" class="customcheckbox"/><label class="checkboxlabel"  for="californiaresident">Yes</label></div>
+           <div><input style="display:none;" id="californiaresident" type="checkbox" class="customcheckbox" ng-click="disabled = !disabled; registration.zipcode = ''" ng-model="modeldata.caliresident"/><label class="checkboxlabel"  for="californiaresident">Yes</label></div>
         </div>
         <div class="col-md-6 form-group" id="zipcodewrap">
-         <label for="zipcode" class="control-label">Zip Code</label>
-          <input class="form-style" id="zipcode" type="text" required=""/>
+         <label for="zipcode" class="control-label" ng-class="disabled ? '' : 'disabled'">Zip Code</label>
+          <input ng-disabled="!(modeldata.caliresident)" ng-required="modeldata.caliresident" id="zipcode" type="text" name="zipcodeinput" ng-model="registration.zipcode" class="form-style" ng-minlength="5" ng-pattern="/9(0(0(0[1-9]|[1-9][0-9])|[1-9][0-9]{2})|[1-5][0-9]{3}|6(0[0-9]{2}|1([0-5][0-9]|6[0-2])))/"/>
+          <!---
+          California zip codes only. CA zip codes range from 90001 to 96162. --> 
+
+          <span ng-show="submitted && registrationForm.zipcodeinput.$error && registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.zipcodeinput.$valid.pattern" class="glyphicon glyphicon-ok form-control-feedback"></span><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.zipcodeinput.$error &&registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty">Please provide a valid 5-digit California zip code.</span></span>
          </div>
         <span class="clearfix">
         <div class="col-md-6 col-md-offset-6">
         <div id="messages">
         </div>
-        <button type="submit" class="btn btn-default btn-custom" ng-click="save()">Submit</button>
-        <button type="reset" class="btn btn-default btn-custom" ng-click="reset()">Reset</button>
+        <button type="submit" class="btn btn-default btn-custom">Submit</button>
         </div>
         </form>
 </div>
     </div>
+
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
-  
-  <script>
-    angular.module('registrationForm', [])
-      .controller('FormController', ['$scope', function($scope) {
-        $scope.master = {};
-
-        $scope.update = function(registration) {
-          $scope.master = angular.copy(registration);
-        };
-
-        $scope.reset = function() {
-          $scope.registration = angular.copy($scope.master);
-        };
-
-        $scope.reset();
-      }]);
-  </script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Angular -->
+
+
+  <script type="text/javascript">
+   //angular
+
+
+var app = angular.module('registrationForm', []);
+
+app.controller('FormController', function($scope) {
+  $scope.butisitvalid = function() {
+    if ($scope.registrationForm.$valid) {
+      $('#success').modal('show');
+      //show the modal!
+    } else {
+      $scope.submitted = true;
+      $scope.trySubmit = true;
+      //dirty up the form so we get some errors    
+    }
+  }
+});
+  </script>
+
 </body>
 
 </html>

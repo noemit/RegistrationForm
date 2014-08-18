@@ -39,10 +39,10 @@ input:disabled, label.disabled {
     opacity:0.2;
 }
 select.form-style {
-    -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-background:no-repeat url(images/simpleblack.png) center right -25px;}
-}
+   -moz-appearance: none;
+    background: url("../images/simpleblack.png") no-repeat scroll right -25px center rgba(0, 0, 0, 0) !important;
+    text-indent: 0.01px;
+    text-overflow: "";}
 
 
 /* custom checkbox as per the PSD */
@@ -70,7 +70,7 @@ padding-left: 25px;
 input[type=checkbox].customcheckbox:checked + label.checkboxlabel {
                             background-position: -36px -17px;                        }
 label.checkboxlabel {
-                background-image:url(images/simpleblack.png);
+                background-image:url(../images/simpleblack.png);
                 -webkit-touch-callout: none;
                 -webkit-user-select: none;
                 -khtml-user-select: none;
@@ -121,8 +121,7 @@ input.ng-dirty.ng-valid  {
 }
 form.submitted input.ng-invalid,
 input.ng-dirty.ng-invalid ,
-form.submitted select.ng-invalid,
-select.ng-dirty.ng-invalid   {
+  {
   border: 1px solid red;
 }
 
@@ -133,7 +132,7 @@ input[type=checkbox].ng-dirty {
 /* error messages and icons */
 
 .glyphicon-remove {color:Red;width:60px;}
-.glyphicon-ok {color:black;width:60px;}
+.glyphicon-ok {color:green;width:60px;}
 
 .help-block{margin-bottom:0px;}
 
@@ -171,3 +170,42 @@ input[type=checkbox].ng-dirty {
     top: 5%;
   }
 }
+/* fix the select dropdown bug in FF 30 - adapted from James Barnett's example on CodePen */
+
+.fix-select {
+  border: 1px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+.fix-select, .fix-select select { width: 100%;}
+select:focus { outline: none; }
+.fix-select select {
+  height: 34px;
+  padding: 5px 0 5px 5px;
+  background: transparent;
+  border: none;
+  
+  /*hide default down arrow in webkit */
+  -webkit-appearance: none; 
+}
+
+@-moz-document url-prefix(){
+  .fix-select select { width: 150%; }
+   select.form-style { background-position: 68% center !important;}
+}
+
+.fa-sort-desc {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  font-size: 24px;
+}
+
+ select::-ms-expand { display: none; } /* hide default down arrow in IE10*/
+
+/* hack to fall back in opera */
+_:-o-prefocus, .selector {
+  .fix-select { background: none; }
+  }
