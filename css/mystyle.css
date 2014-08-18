@@ -119,11 +119,8 @@ input[type=checkbox] {
 input.ng-dirty.ng-valid  {
   border: 1px solid black;
 }
-form.submitted input.ng-invalid,
-input.ng-dirty.ng-invalid ,
-  {
-  border: 1px solid red;
-}
+.help-block
+{color:red;}
 
 
 input[type=checkbox].ng-dirty {
