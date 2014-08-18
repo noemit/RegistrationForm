@@ -35,9 +35,13 @@ border-radius:0 !imporant;
 
 
 }
-input:disabled, label.disabled {
-    opacity:0.2;
+label.disabled {
+    opacity:0.3;
 }
+
+input:disabled 
+{background-color:#777777; opacity:0.2;}
+
 select.form-style {
    -moz-appearance: none;
     background: url("../images/simpleblack.png") no-repeat scroll right -25px center rgba(0, 0, 0, 0) !important;
@@ -93,8 +97,10 @@ width:100%;
 color:white;
 border:1px solid black;
 margin-top:20px;
+border-radius:3px;
+height:56px;
 }
-.btn-custom:hover {
+.btn-custom:hover,.btn-custom:focus,.btn-custom:active {
 background:#333;
 width:100%;
 color:white;
