@@ -61,10 +61,10 @@
            <input class="form-style" id="nameinput" name="name" type="text" required ng-model="registration.name" /><span ng-show="registrationForm.name.$invalid &&registrationForm.name.$dirty || submitted && registrationForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.name.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
            <span class="help-block"><span ng-cloak ng-show="submitted && registrationForm.name.$invalid || registrationForm.name.$invalid && registrationForm.name.$dirty || submitted && registrationForm.name.$invalid">Please provide your name.</span></span>
         </div>
-        <div class="col-md-6 form-group">
-         <label for="byinput">Birth Year</label>
+        <div class="col-md-6 form-group required">
+         <label for="byinput" class="control-label">Birth Year</label>
          <div class="fix-select">
-         <select id="byinput" name="birthyear" ng-model="birthyear" required class="form-style" ng-pattern="/(19[0-9]{2}|200[01])/">
+         <select id="byinput" name="birthyear" required ng-model="birthyear" required class="form-style" ng-pattern="/(19[0-9]{2}|200[01])/">
     <option disabled selected style="display:none;" value="">select year</option>
     <option value="2001">2001</option>
     <option value="2000">2000</option>
@@ -184,7 +184,7 @@
           <label>Are you a California resident?</label>
            <div><input style="display:none;" id="californiaresident" type="checkbox" class="customcheckbox" ng-click="disabled = !disabled; registration.zipcode = ''" ng-model="modeldata.caliresident"/><label class="checkboxlabel"  for="californiaresident">Yes</label></div>
         </div>
-        <div class="col-md-6 form-group" id="zipcodewrap">
+        <div class="col-md-6 form-group" ng-class="disabled ? 'required' : ''" id="zipcodewrap">
          <label for="zipcode" class="control-label" ng-class="disabled ? '' : 'disabled'">Zip Code</label>
           <input ng-disabled="!(modeldata.caliresident)" ng-required="modeldata.caliresident" id="zipcode" type="text" name="zipcodeinput" ng-model="registration.zipcode" class="form-style" ng-minlength="5" ng-pattern="/9(0(0(0[1-9]|[1-9][0-9])|[1-9][0-9]{2})|[1-5][0-9]{3}|6(0[0-9]{2}|1([0-5][0-9]|6[0-2])))/"/>
           <!---
