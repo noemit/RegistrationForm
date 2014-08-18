@@ -58,8 +58,8 @@
     <form role="form" name="registrationForm" ng-submit="butisitvalid()" ng-class="{submitted:trySubmit}" novalidate>
         <div class="col-md-6 form-group required" show-errors>
           <label for="nameinput" class="control-label">Name</label>
-           <input class="form-style" id="nameinput" name="name" type="text" required ng-model="registration.name" /><span ng-show="registrationForm.name.$invalid && registrationForm.name.$touched || submitted && registrationForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.name.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
-           <span class="help-block"><span ng-cloak ng-show="submitted && registrationForm.name.$invalid || registrationForm.name.$invalid && registrationForm.name.$touched || submitted && registrationForm.name.$invalid">Please provide your name.</span></span>
+           <input class="form-style" id="nameinput" name="name" type="text" required ng-model="registration.name" /><span ng-show="registrationForm.name.$invalid &&registrationForm.name.$dirty || submitted && registrationForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.name.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span>
+           <span class="help-block"><span ng-cloak ng-show="submitted && registrationForm.name.$invalid || registrationForm.name.$invalid && registrationForm.name.$dirty || submitted && registrationForm.name.$invalid">Please provide your name.</span></span>
         </div>
         <div class="col-md-6 form-group">
          <label for="byinput">Birth Year</label>
@@ -168,7 +168,7 @@
     <option value="1902">1902</option>
     <option value="1901">1901</option>
     <option value="1900">1900</option>
-   </select><span class="fa fa-sort-desc"></span></div><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.birthyear.$error.required">Your birth year must be less than or equal to 2001.</span></span>
+   </select><span class="fa fa-sort-desc"></span></div><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.birthyear.$error.required || registrationForm.birthyear.$error.required && registrationForm.birthyear.$touched ">Your birth year must be less than or equal to 2001.</span></span>
    <!-- this validation is just for show. user can't select anything outside the specified range, so any real validation  should be done on server-side. -->
          </div>
           <span class="clearfix">
