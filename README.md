@@ -1,7 +1,7 @@
 RegistrationForm
 ================
 
-Just another code test!
+Just another code test! This form validates using basic angular validators and regex as you type. When all fields validate and you press submit, a pretty modal pops up. A couple custom form elements (submit button, select element and checkboxes) were also made by me.
 
 ###Tools:
 1. AngularJS
@@ -36,12 +36,10 @@ Just another code test!
    * Input is cleared when residency button is checked/unchecked.
    * Validates as you type.
 
-Cross-Browser Compatibility:
-
 
 Tested both form & modal:
  * iPhone (7.0.4)
- * Android (newest version, I think).
+ * Android (newest version, default browser).
  * FF, Safari, Chrome on OSX
  * FF on PC
 
