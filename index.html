@@ -171,7 +171,7 @@
    </select><span class="fa fa-sort-desc"></span></div><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.birthyear.$error.required || registrationForm.birthyear.$error.required && registrationForm.birthyear.$touched ">Your birth year must be less than or equal to 2001.</span></span>
    <!-- this validation is just for show. user can't select anything outside the specified range, so any real validation  should be done on server-side. -->
          </div>
-          <span class="clearfix">
+          
            <div class="col-md-6 form-group required" show-errors>
           <label for="emailinput" class="control-label">Email</label>
            <input class="form-style" id="emailinput" type="text" name="email" required  ng-pattern="/^[a-zA-Z]+[a-zA-Z0-9._\i]+@[a-zA-Z\i]+\.[a-zA-Z.\i]{2,5}$/" ng-model="text" n/><span ng-show="submitted && registrationForm.email.$error &&registrationForm.email.$error.required || registrationForm.email.$invalid && registrationForm.email.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.email.$valid" class="glyphicon glyphicon-ok form-control-feedback"></span><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.email.$invalid || registrationForm.email.$invalid && registrationForm.email.$dirty" class="tada">Please provide a valid email address.</span></span>
@@ -192,7 +192,6 @@
 
           <span ng-show="submitted && registrationForm.zipcodeinput.$error && registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span><span ng-show="registrationForm.zipcodeinput.$valid.pattern" class="glyphicon glyphicon-ok form-control-feedback"></span><span class="help-block">&nbsp;<span ng-cloak ng-show="submitted && registrationForm.zipcodeinput.$error &&registrationForm.zipcodeinput.$error.required || registrationForm.zipcodeinput.$invalid && registrationForm.zipcodeinput.$dirty">Please provide a valid 5-digit California zip code.</span></span>
          </div>
-        <span class="clearfix">
         <div class="col-md-6 col-md-offset-6">
         <div id="messages">
         </div>
