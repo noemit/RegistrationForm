@@ -1,0 +1,173 @@
+/* prevent error messages from blinking on load */
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+
+
+/* the main div  */
+.customcontainer
+{
+    border:1px solid #929292;
+    padding:10px;
+    margin-top:80px;
+    padding-bottom: 30px;
+margin-bottom: 10px;
+}
+
+
+/* basic form styling */
+
+.form-style {
+    display: block;
+width: 100%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+border: 1px solid #000;
+border-radius:0 !imporant;
+-webkit-appearance: none;
+-webkit-border-radius:0;
+
+
+}
+input:disabled, label.disabled {
+    opacity:0.2;
+}
+select.form-style {
+    -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+background:no-repeat url(images/simpleblack.png) center right -25px;}
+}
+
+
+/* custom checkbox as per the PSD */
+
+input[type=checkbox].customcheckbox {
+    -webkit-appearance: none;
+      display:none !important;
+      opacity:0;width:0px;
+                        }
+    input[type=checkbox].customcheckbox + label.checkboxlabel {
+       padding-left: 22px;
+height: 17px;
+display: inline-block;
+line-height: 17px;
+background-repeat: no-repeat;
+background-position: -36px 0px;
+vertical-align: middle;
+font-weight: normal;
+cursor: pointer;
+padding-left: 4px;
+padding-left: 25px;
+
+                        }
+
+input[type=checkbox].customcheckbox:checked + label.checkboxlabel {
+                            background-position: -36px -17px;                        }
+label.checkboxlabel {
+                background-image:url(images/simpleblack.png);
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+             .customheading {padding-bottom:10px;}
+            .customheading h3 {font-weight: normal;}
+            .form-group.required .control-label:after { 
+   content:" *";
+   color:red;
+}
+
+/* button styling */
+
+.btn-custom {
+background:#000;
+width:100%;
+color:white;
+border:1px solid black;
+margin-top:20px;
+}
+.btn-custom:hover {
+background:#333;
+width:100%;
+color:white;
+border:1px solid black;
+}
+.reset-btn{
+    background:none;
+    border:0px;
+    float:right;
+}
+
+
+/* some edits for iphone */
+
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+input[type=checkbox] {
+-webkit-appearance: initial;
+}
+
+input.ng-dirty.ng-valid  {
+  border: 1px solid black;
+}
+form.submitted input.ng-invalid,
+input.ng-dirty.ng-invalid ,
+form.submitted select.ng-invalid,
+select.ng-dirty.ng-invalid   {
+  border: 1px solid red;
+}
+
+
+input[type=checkbox].ng-dirty {
+  border: 0px;
+}
+/* error messages and icons */
+
+.glyphicon-remove {color:Red;width:60px;}
+.glyphicon-ok {color:black;width:60px;}
+
+.help-block{margin-bottom:0px;}
+
+/* CSS for the modal and some fixes so it works on iPhone */
+.custom-modal {
+    border:1px solid #929292 !important;
+    padding:10%;
+    padding-top:15%;
+    padding-bottom:15%;
+    text-align:center;
+    box-shadow:none !important;
+    border-radius:0px;
+}
+
+.modal { 
+    position: fixed; 
+    top: 3%; 
+    right: 3%; 
+    left: 3%; 
+    width: auto; 
+    margin: 0; 
+}
+.modal-body { 
+    height: 60%; 
+}
+.modal-body { 
+    max-height: 350px; 
+    padding: 15px; 
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
+ }
+/* Make the modal work on iPhone (unsure about android) */
+ @media (max-width: 767px) {
+  #content .modal.fade.in {
+    top: 5%;
+  }
+}
