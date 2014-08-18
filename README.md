@@ -9,8 +9,9 @@ Just another code test!
 
 ###This form validates:
  1. Name
-   * Error shows up only after the input is touched, or submit is pressed.
+   * Error shows up only after the input is dirtied, or submit is pressed.
    * Only requirement for name is that it is not blank.
+   * Validates as you type.
  
  2. Birth Year
    * Error shows up only after submit is pressed.
@@ -20,6 +21,7 @@ Just another code test!
  3. Email
    * regex basically requires something@something.smthg
    * TLD is required, so root@localhost won't work. Thought this would be more appropriate. TLD is 2-5 characters long.
+   * Validates as you type.
 
  4. Residency
    * Custom check box.
@@ -29,9 +31,10 @@ Just another code test!
 5. Zipcode
    * Disabled and not required by default. Triggered via the checkbox.
    * Regex validation for California zip codes only! (90001 to 96162)
-   * Error shows up only after the input is touched, or submit is pressed.
+   * Error shows up only after the input is dirtied, or submit is pressed.
    * Error does not show up while the input is disabled.
    * Input is cleared when residency button is checked/unchecked.
+   * Validates as you type.
 
 Cross-Browser Compatibility:
 
